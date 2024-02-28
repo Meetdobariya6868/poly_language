@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:poly_language/navigation/provider_screen.dart';
+
+import 'blog_screen.dart';
+import 'camera_screen.dart';
+import 'categories_screen.dart';
+import 'home_screen.dart';
 
 // void main() {
 //   runApp(MyApp());
@@ -17,12 +23,12 @@ import 'package:flutter/material.dart';
 //   }
 // }
 
-class HomePage extends StatefulWidget {
+class NavigationScreen extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _NavigationScreenState createState() => _NavigationScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _NavigationScreenState extends State<NavigationScreen> {
   int _selectedIndex = 2;
 
   final List<Widget> _screens = [
@@ -42,9 +48,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Bottom Navigation Demo'),
-      ),
+      // appBar: AppBar(
+      //   title: Text('Bottom Navigation Demo'),
+      // ),
       body: _screens[_selectedIndex],
       bottomNavigationBar: CustomBottomNavigationBar(
         selectedIndex: _selectedIndex,
@@ -129,62 +135,62 @@ class HalfDiamondPainter extends CustomPainter {
   }
 }
 
-class CategoriesScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Categories Screen',
-        style: TextStyle(fontSize: 24),
-      ),
-    );
-  }
-}
-
-class ProvidersScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Providers Screen',
-        style: TextStyle(fontSize: 24),
-      ),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Home Screen',
-        style: TextStyle(fontSize: 24),
-      ),
-    );
-  }
-}
-
-class BlogScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Blog Screen',
-        style: TextStyle(fontSize: 24),
-      ),
-    );
-  }
-}
-
-class CameraScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Camera Screen',
-        style: TextStyle(fontSize: 24),
-      ),
-    );
-  }
-}
+// class CategoriesScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text(
+//         'Categories Screen',
+//         style: TextStyle(fontSize: 24),
+//       ),
+//     );
+//   }
+// }
+//
+// class ProvidersScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text(
+//         'Providers Screen',
+//         style: TextStyle(fontSize: 24),
+//       ),
+//     );
+//   }
+// }
+//
+// class HomeScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text(
+//         'Home Screen',
+//         style: TextStyle(fontSize: 24),
+//       ),
+//     );
+//   }
+// }
+//
+// class BlogScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text(
+//         'Blog Screen',
+//         style: TextStyle(fontSize: 24),
+//       ),
+//     );
+//   }
+// }
+//
+// class CameraScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text(
+//         'Camera Screen',
+//         style: TextStyle(fontSize: 24),
+//       ),
+//     );
+//   }
+// }
