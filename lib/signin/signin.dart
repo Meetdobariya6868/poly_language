@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../menubar/drawer_screen.dart';
 import '../navigation/navigation_screen.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -63,7 +64,7 @@ class SignInScreen extends StatelessWidget {
                       // Redirect to home page
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => NavigationScreen()),
+                        MaterialPageRoute(builder: (context) => CombinedScreen()),
                       );
                     } else {
                       // Show toast for wrong password
