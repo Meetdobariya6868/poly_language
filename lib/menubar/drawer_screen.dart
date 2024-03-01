@@ -66,7 +66,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                     borderRadius: BorderRadius.circular(20),
                     child: Image(
                       fit: BoxFit.cover,
-                      image: AssetImage('assets/Group.jpg'),
+                      image: AssetImage('assets/images/intro1.jpg'),
                     ),
                   ),
                 ),

@@ -104,7 +104,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: List.generate(
-                      5,
+                      2,
                           (index) => CourseCard(),
                     ),
                   ),
