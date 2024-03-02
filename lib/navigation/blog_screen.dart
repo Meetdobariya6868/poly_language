@@ -30,7 +30,7 @@ class _BlogScreenState extends State<BlogScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 50),
+            SizedBox(height: 40),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
               child: Row(

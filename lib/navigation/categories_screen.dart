@@ -12,7 +12,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   double yOffset = 0;
   bool isDrawerOpen = false; // State variable to track if drawer is open
 
-
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
@@ -29,7 +28,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         child: Column(
           children: <Widget>[
             SizedBox(
-              height: 50,
+              height: 40,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
@@ -68,85 +67,138 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 40,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  color: Colors.green.withOpacity(0.1),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      hintText: 'What are you going to find?',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide.none,
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  child: Text(
-                    'Featured Courses',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: List.generate(
-                      2,
-                          (index) => CourseCard(),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  child: ExpansionTile(
-                    title: Text(
-                      'Newest Courses',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    children: [
-                      SizedBox(height: 10),
-                      NewestCoursesList(),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  child: ExpansionTile(
-                    title: Text(
-                      'Newest Bundles',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    children: [
-                      SizedBox(height: 10),
-                      NewestBundlesList(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            // SizedBox(
+            //   height: 40,
+            // ),
+            TrendingSection(),
+            BrowseCategoriesSection(),
           ],
         ),
       ),
     );
   }
 
+}
+
+
+class TrendingSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          child: Text(
+            'Trending',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Container(
+          height: 120,
+          margin: EdgeInsets.symmetric(horizontal: 20),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              _buildTrendingItem('Title 1', 'Subtitle 1'),
+              _buildTrendingItem('Title 2', 'Subtitle 2'),
+              _buildTrendingItem('Title 3', 'Subtitle 3'),
+              // Add more items as needed
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTrendingItem(String title, String subtitle) {
+    return Container(
+      width: 180, // Adjust width as needed
+      margin: EdgeInsets.only(right: 10), // Add spacing between items
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: Colors.green.withOpacity(0.1),
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 80,
+            height: double.infinity,
+            alignment: Alignment.center,
+            child: Icon(Icons.shopping_bag_sharp, size: 40),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    subtitle,
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+class BrowseCategoriesSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          child: Text(
+            'Browse Categories',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.green.withOpacity(0.1),
+          ),
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: 5, // Number of ListTiles
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                leading: Icon(Icons.category),
+                title: Text('Category Title $index'),
+                subtitle: Text('Course $index'),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
 }

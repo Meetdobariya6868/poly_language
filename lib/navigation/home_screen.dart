@@ -33,31 +33,32 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 40,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
+              // margin: EdgeInsets.symmetric(horizontal: 10),
+              color: primaryColor,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   isDrawerOpen
                       ? GestureDetector(
-                    child: Icon(Icons.arrow_back_ios),
-                    onTap: () {
-                      setState(() {
-                        xOffset = 0;
-                        yOffset = 0;
-                        isDrawerOpen = false;
-                      });
-                    },
-                  )
+                          child: Icon(Icons.arrow_back_ios),
+                          onTap: () {
+                            setState(() {
+                              xOffset = 0;
+                              yOffset = 0;
+                              isDrawerOpen = false;
+                            });
+                          },
+                        )
                       : GestureDetector(
-                    child: Icon(Icons.menu),
-                    onTap: () {
-                      setState(() {
-                        xOffset = 290;
-                        yOffset = 80;
-                        isDrawerOpen = true;
-                      });
-                    },
-                  ),
+                          child: Icon(Icons.menu),
+                          onTap: () {
+                            setState(() {
+                              xOffset = 290;
+                              yOffset = 80;
+                              isDrawerOpen = true;
+                            });
+                          },
+                        ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -93,13 +94,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  color: primaryColor,
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+                    color: primaryColor,
+                  ),
+
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.search),
@@ -149,7 +153,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: ExpansionTile(
@@ -181,8 +184,8 @@ class NewestCoursesList extends StatelessWidget {
     return Container(
       height: 300, // Adjust the height as needed
       child: ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: 2, // Number of newest courses
+        scrollDirection: Axis.horizontal,
+        itemCount: 2, // Number of newest courses
         itemBuilder: (BuildContext context, int index) {
           // Define unique data for each card based on the index
           String imageName = ''; // Set the image name
@@ -242,9 +245,7 @@ class NewestCoursesList extends StatelessWidget {
             ),
           );
         },
-
       ),
-
     );
   }
 }
@@ -728,10 +729,12 @@ class CourseCard extends StatelessWidget {
             ),
           ],
           image: DecorationImage(
-            image: AssetImage('assets/images/featured.jpg'), // Replace 'assets/your_image.jpg' with your image path
+            image: AssetImage(
+                'assets/images/featured.jpg'), // Replace 'assets/your_image.jpg' with your image path
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.6), // Adjust opacity as needed (0.0 - 1.0)
+              Colors.black
+                  .withOpacity(0.6), // Adjust opacity as needed (0.0 - 1.0)
               BlendMode.srcOver,
             ),
           ),
@@ -757,7 +760,10 @@ class CourseCard extends StatelessWidget {
               padding: EdgeInsets.all(10),
               child: Text(
                 'IELTS',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.white),
               ),
             ),
             Row(

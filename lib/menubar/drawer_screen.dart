@@ -76,58 +76,84 @@ class _CombinedScreenState extends State<CombinedScreen> {
                 Text(
                   'Mosallas Group',
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
+
               ],
             ),
-            Column(
-              children: <Widget>[
-                NewRow(
-                  text: 'Settings',
-                  icon: Icons.error_outline,
+            SizedBox(height: 50),
+            Expanded(
+              child: SingleChildScrollView( // Wrap the column with SingleChildScrollView
+                child: Column(
+                  children: <Widget>[
+                    NewRow(
+                      text: 'Settings',
+                      icon: Icons.settings,
+                    ),
+                    SizedBox(height: 20),
+                    NewRow(
+                      text: 'Dashboard',
+                      icon: Icons.dashboard_customize_rounded,
+                    ),
+                    SizedBox(height: 20),
+                    NewRow(
+                      text: 'Courses',
+                      icon: Icons.video_call_outlined,
+                    ),
+                    SizedBox(height: 20),
+                    NewRow(
+                      text: 'Meetings',
+                      icon: Icons.calendar_month_outlined,
+                    ),
+                    SizedBox(height: 20),
+                    NewRow(
+                      text: 'Assignments',
+                      icon: Icons.task_rounded,
+                    ),
+                    SizedBox(height: 20),
+                    NewRow(
+                      text: 'Quizzes',
+                      icon: Icons.quiz_rounded,
+                    ),
+                    SizedBox(height: 20),
+                    NewRow(
+                      text: 'Certificates',
+                      icon: Icons.stars_rounded,
+                    ),
+                    SizedBox(height: 20),
+                    NewRow(
+                      text: 'Favorites',
+                      icon: Icons.favorite_border_rounded,
+                    ),
+                    SizedBox(height: 20),
+                    NewRow(
+                      text: 'Comments',
+                      icon: Icons.comment,
+                    ),
+                    SizedBox(height: 20),
+                    NewRow(
+                      text: 'Financial',
+                      icon: Icons.account_balance_wallet,
+                    ),
+                    SizedBox(height: 20),
+                    NewRow(
+                      text: 'Subscription',
+                      icon: Icons.newspaper,
+                    ),
+                    SizedBox(height: 20),
+                    NewRow(
+                      text: 'Support',
+                      icon: Icons.mail_lock_rounded,
+                    ),
+
+                  ],
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                NewRow(
-                  text: 'Profile',
-                  icon: Icons.person_outline,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                NewRow(
-                  text: 'Messages',
-                  icon: Icons.chat_bubble_outline,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                NewRow(
-                  text: 'Saved',
-                  icon: Icons.bookmark_border,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                NewRow(
-                  text: 'Favorites',
-                  icon: Icons.favorite_border,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                NewRow(
-                  text: 'Hint',
-                  icon: Icons.lightbulb_outline,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-              ],
+              ),
             ),
+            SizedBox(height: 40),
             Row(
               children: <Widget>[
                 Icon(
@@ -139,245 +165,14 @@ class _CombinedScreenState extends State<CombinedScreen> {
                 ),
                 Text(
                   'Log out',
-                  style: TextStyle(color: Colors.white.withOpacity(0.5)),
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.5),
+                  ),
                 )
               ],
             )
           ],
         ),
-      ),
-    );
-  }
-
-  Widget buildHomeScreen() {
-    return AnimatedContainer(
-      transform: Matrix4.translationValues(xOffset, yOffset, 0)
-        ..scale(isDrawerOpen ? 0.85 : 1.00)
-        ..rotateZ(isDrawerOpen ? -50 : 0),
-      duration: Duration(milliseconds: 200),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius:
-        isDrawerOpen ? BorderRadius.circular(40) : BorderRadius.circular(0),
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 50,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  isDrawerOpen
-                      ? GestureDetector(
-                    child: Icon(Icons.arrow_back_ios),
-                    onTap: () {
-                      setState(() {
-                        xOffset = 0;
-                        yOffset = 0;
-                        isDrawerOpen = false;
-                      });
-                    },
-                  )
-                      : GestureDetector(
-                    child: Icon(Icons.menu),
-                    onTap: () {
-                      setState(() {
-                        xOffset = 290;
-                        yOffset = 80;
-                        isDrawerOpen = true;
-                      });
-                    },
-                  ),
-                  Text(
-                    'Beautiful Drawer',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black87,
-                        decoration: TextDecoration.none),
-                  ),
-                  Container(),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  color: Colors.green.withOpacity(0.1),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      hintText: 'What are you going to find?',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide.none,
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  child: Text(
-                    'Featured Courses',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: List.generate(
-                      5,
-                          (index) => CourseCard(),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  child: ExpansionTile(
-                    title: Text(
-                      'Newest Courses',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    children: [
-                      SizedBox(height: 10),
-                      NewestCoursesList(),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  child: ExpansionTile(
-                    title: Text(
-                      'Newest Bundles',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    children: [
-                      SizedBox(height: 10),
-                      NewestBundlesList(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
-class NewPadding extends StatelessWidget {
-  final String image1;
-  final String text1;
-  final String image2;
-  final String text2;
-
-  const NewPadding({
-    Key? key,
-    required this.image1,
-    required this.text1,
-    required this.image2,
-    required this.text2,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 35),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Container(
-            width: 150,
-            height: 150,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: Offset(0, 0),
-                ),
-              ],
-            ),
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  child: Image(
-                    height: 100,
-                    width: 100,
-                    image: AssetImage(image1),
-                  ),
-                ),
-                Text(
-                  text1,
-                  style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 15,
-                      decoration: TextDecoration.none),
-                )
-              ],
-            ),
-          ),
-          Container(
-            width: 150,
-            height: 150,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: Offset(0, 0),
-                ),
-              ],
-            ),
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  child: Image(
-                    height: 100,
-                    width: 100,
-                    image: AssetImage(image2),
-                  ),
-                ),
-                Text(
-                  text2,
-                  style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 15,
-                      decoration: TextDecoration.none),
-                )
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
