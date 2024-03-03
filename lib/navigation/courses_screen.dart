@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CameraScreen extends StatefulWidget {
+class CorsesScreen extends StatefulWidget {
   @override
-  State<CameraScreen> createState() => _CameraScreenState();
+  State<CorsesScreen> createState() => _CorsesScreenState();
 }
 
-class _CameraScreenState extends State<CameraScreen> {
+class _CorsesScreenState extends State<CorsesScreen> {
   double xOffset = 0;
 
   double yOffset = 0;

@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:poly_language/screens/assignment_screen.dart';
+import 'package:poly_language/screens/metting_screen.dart';
+import 'package:poly_language/screens/quizz_screen.dart';
 
 import '../navigation/blog_screen.dart';
-import '../navigation/camera_screen.dart';
+import '../navigation/courses_drawer_screen.dart';
+import '../navigation/courses_screen.dart';
 import '../navigation/categories_screen.dart';
 import '../navigation/custom_bottom_navigation.dart';
 import '../navigation/home_screen.dart';
 import '../navigation/provider_screen.dart';
+import '../screens/certificate_screen.dart';
+import '../screens/comment_screen.dart';
+import '../screens/dash_board_screen.dart';
+import '../screens/favorite_screen.dart';
 import '../screens/new_room.dart';
+import '../screens/profile_screen.dart';
+import '../screens/support_message_screen.dart';
 
 class CombinedScreen extends StatefulWidget {
   @override
@@ -25,7 +35,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
     ProvidersScreen(),
     HomeScreen(), // Include HomeScreen here
     BlogScreen(),
-    CameraScreen(),
+    CorsesScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -92,61 +102,145 @@ class _CombinedScreenState extends State<CombinedScreen> {
                     NewRow(
                       text: 'Settings',
                       icon: Icons.settings,
+                      onTap: () {
+                        // Handle navigation to Settings screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ProfileScreen()),
+                        );
+                      },
                     ),
                     SizedBox(height: 20),
                     NewRow(
                       text: 'Dashboard',
                       icon: Icons.dashboard_customize_rounded,
+                      onTap: () {
+                        // Handle navigation to Settings screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => DashboardScreen()),
+                        );
+                      },
                     ),
                     SizedBox(height: 20),
                     NewRow(
                       text: 'Courses',
                       icon: Icons.video_call_outlined,
+                      onTap: () {
+                        // Handle navigation to Settings screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CoursesDrawerScreen()),
+                        );
+                      },
                     ),
                     SizedBox(height: 20),
                     NewRow(
                       text: 'Meetings',
                       icon: Icons.calendar_month_outlined,
+                      onTap: () {
+                        // Handle navigation to Settings screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MettingScreen()),
+                        );
+                      },
                     ),
                     SizedBox(height: 20),
                     NewRow(
                       text: 'Assignments',
                       icon: Icons.task_rounded,
+                      onTap: () {
+                        // Handle navigation to Settings screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => AssignmentScreen()),
+                        );
+                      },
                     ),
                     SizedBox(height: 20),
                     NewRow(
                       text: 'Quizzes',
                       icon: Icons.quiz_rounded,
+                      onTap: () {
+                        // Handle navigation to Settings screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => QuizzScreen()),
+                        );
+                      },
                     ),
                     SizedBox(height: 20),
                     NewRow(
                       text: 'Certificates',
                       icon: Icons.stars_rounded,
+                      onTap: () {
+                        // Handle navigation to Settings screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CertificateScreen()),
+                        );
+                      },
                     ),
                     SizedBox(height: 20),
                     NewRow(
                       text: 'Favorites',
                       icon: Icons.favorite_border_rounded,
+                      onTap: () {
+                        // Handle navigation to Settings screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => FavoriteScreen()),
+                        );
+                      },
                     ),
                     SizedBox(height: 20),
                     NewRow(
                       text: 'Comments',
                       icon: Icons.comment,
+                      onTap: () {
+                        // Handle navigation to Settings screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CommentScreen()),
+                        );
+                      },
                     ),
                     SizedBox(height: 20),
                     NewRow(
                       text: 'Financial',
                       icon: Icons.account_balance_wallet,
+                      onTap: () {
+                        // Handle navigation to Settings screen
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => SettingsScreen()),
+                        // );
+                      },
                     ),
                     SizedBox(height: 20),
                     NewRow(
                       text: 'Subscription',
                       icon: Icons.newspaper,
+                      onTap: () {
+                        // Handle navigation to Settings screen
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => SettingsScreen()),
+                        // );
+                      },
                     ),
                     SizedBox(height: 20),
                     NewRow(
                       text: 'Support',
                       icon: Icons.mail_lock_rounded,
+                      onTap: () {
+                        // Handle navigation to Settings screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SupportMessageScreen()),
+                        );
+                      },
                     ),
 
                   ],

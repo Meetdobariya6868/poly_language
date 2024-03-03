@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:poly_language/navigation/provider_screen.dart';
 
 import 'blog_screen.dart';
-import 'camera_screen.dart';
+import 'courses_screen.dart';
 import 'categories_screen.dart';
 import 'home_screen.dart';
 
@@ -36,7 +36,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
     ProvidersScreen(),
     HomeScreen(),
     BlogScreen(),
-    CameraScreen(),
+    CorsesScreen(),
   ];
 
   void _onItemTapped(int index) {
