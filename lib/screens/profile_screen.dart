@@ -15,6 +15,7 @@ class ProfileScreen extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: primaryColor,
           title: Text('Profile'),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
@@ -23,7 +24,9 @@ class ProfileScreen extends StatelessWidget {
             },
           ),
         ),
-        body: ProfileBody(),
+        body: SingleChildScrollView(
+            child: ProfileBody(),
+        ),
       ),
     );
   }
@@ -35,41 +38,43 @@ class ProfileBody extends StatefulWidget {
 }
 
 class _ProfileBodyState extends State<ProfileBody> {
-  String? selectedOption = 'General'; // Initialize with 'General'
+  String selectedOption = 'General'; // Initialize with 'General'
+
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatarWithEdit(),
-            SizedBox(height: 20),
-            Text('John Doe', style: TextStyle(fontSize: 20)),
-            Text('Role: User', style: TextStyle(fontSize: 16)),
-            SizedBox(height: 20),
-            OptionRow(
-              options: ['General', 'Security', 'Financial', 'Localization'],
-              onOptionTap: (option) {
-                setState(() {
-                  selectedOption = option;
-                });
-              },
-            ),
-            SizedBox(height: 20),
-            Expanded(
-              child: selectedOption != null ? buildOptionContent(selectedOption!) : Placeholder(),
-            ),
-            SizedBox(height: 20),
-            RoundedButton(
-              text: 'Save',
-              onPressed: () {
-                // Handle save button tap
-              },
-            ),
-          ],
+    return SingleChildScrollView(
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatarWithEdit(),
+              SizedBox(height: 20),
+              Text('John Doe', style: TextStyle(fontSize: 20)),
+              Text('Role: User', style: TextStyle(fontSize: 16)),
+              SizedBox(height: 20),
+              OptionRow(
+                options: ['General', 'Security', 'Financial', 'Localization'],
+                selectedOption: selectedOption,
+                onOptionTap: (option) {
+                  setState(() {
+                    selectedOption = option;
+                  });
+                },
+              ),
+              SizedBox(height: 20),
+              selectedOption != null ? buildOptionContent(selectedOption!) : Placeholder(),
+              SizedBox(height: 20),
+              RoundedButton(
+                text: 'Save',
+                onPressed: () {
+                  // Handle save button tap
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -90,6 +95,7 @@ class _ProfileBodyState extends State<ProfileBody> {
     }
   }
 }
+
 
 class CircleAvatarWithEdit extends StatelessWidget {
   @override
@@ -118,10 +124,13 @@ class CircleAvatarWithEdit extends StatelessWidget {
 class OptionRow extends StatelessWidget {
   final List<String> options;
   final Function(String) onOptionTap;
+  final String selectedOption;
+
 
   const OptionRow({
     required this.options,
     required this.onOptionTap,
+    required this.selectedOption,
   });
 
   @override
@@ -131,7 +140,11 @@ class OptionRow extends StatelessWidget {
       children: options
           .map((option) => GestureDetector(
         onTap: () => onOptionTap(option),
-        child: Text(option),
+        child: Text(
+          option,
+          style: TextStyle(
+            decoration: option == selectedOption ? TextDecoration.underline : TextDecoration.none,
+          ),),
       ))
           .toList(),
     );

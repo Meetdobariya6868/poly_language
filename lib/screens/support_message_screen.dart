@@ -47,7 +47,12 @@ class SupportMessageScreen extends StatelessWidget {
         length: 2, // Define the number of tabs
         child: Scaffold(
           appBar: AppBar(
-            title: Text('Support Messages'),
+            backgroundColor: primaryColor,
+            iconTheme: IconThemeData(
+              color: Colors.white, // Change the color of the leading icon to white
+            ),
+            elevation: 0,
+            title: Text('Support Messages',style: TextStyle(color: Colors.white),),
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
@@ -64,16 +69,13 @@ class SupportMessageScreen extends StatelessWidget {
           body: TabBarView( // Add TabBarView to switch between tabs
             children: [
               // Define content for Tab 1
-              _buildContent('assets/images/intro2.jpg', 'No Tickets!',
-                  'Need help? Create new support request.')
+              _buildContent('assets/images/intro5.jpg', 'No Tickets!',
+                  'Need help? Create new support request.'),
+              _buildContent('assets/images/intro.jpg', 'No Tickets!',
+                  'Need help? Create new support request.'),
             ],
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              // Add functionality for the floating action button
-            },
-            child: Icon(Icons.add),
-          ),
+
         ),
       ),
     );

@@ -47,6 +47,7 @@ class QuizzScreen extends StatelessWidget {
         length: 2, // Define the number of tabs
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: primaryColor,
             title: Text('Quizzes'),
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
@@ -55,6 +56,7 @@ class QuizzScreen extends StatelessWidget {
               },
             ),
             bottom: TabBar( // Add TabBar to the appBar
+              isScrollable: true,
               tabs: [
                 Tab(text: 'My Result'),
                 Tab(text: 'Not Participated'),
@@ -64,7 +66,9 @@ class QuizzScreen extends StatelessWidget {
           body: TabBarView( // Add TabBarView to switch between tabs
             children: [
               // Define content for Tab 1
-              _buildContent('assets/images/intro2.jpg', 'No Result!',
+              _buildContent('assets/images/intro5.jpg', 'No Result!',
+                  'You have no quiz result.'),
+              _buildContent('assets/images/intro4.jpg', 'No Result!',
                   'You have no quiz result.')
             ],
           ),

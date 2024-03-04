@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../screens/constant.dart';
+
 class CorsesScreen extends StatefulWidget {
   @override
   State<CorsesScreen> createState() => _CorsesScreenState();
@@ -52,23 +54,23 @@ class _CorsesScreenState extends State<CorsesScreen> {
             isDrawerOpen ? BorderRadius.circular(40) : BorderRadius.circular(0),
       ),
       child: DefaultTabController(
-        length: 3,
+        length: 2,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.transparent,
+            backgroundColor: primaryColor,
             elevation: 0,
             centerTitle: true,
             title: Text(
               'Courses',
               style: TextStyle(
                 fontSize: 20,
-                color: Colors.black87,
+                color: Colors.white,
                 decoration: TextDecoration.none,
               ),
             ),
             leading: isDrawerOpen
                 ? GestureDetector(
-                    child: Icon(Icons.arrow_back_ios),
+                    child: Icon(Icons.arrow_back_ios,color: Colors.white,size: 30),
                     onTap: () {
                       setState(() {
                         xOffset = 0;
@@ -78,7 +80,7 @@ class _CorsesScreenState extends State<CorsesScreen> {
                     },
                   )
                 : GestureDetector(
-                    child: Icon(Icons.menu),
+                    child: Icon(Icons.menu,color: Colors.white,size: 25),
                     onTap: () {
                       setState(() {
                         xOffset = 290;
@@ -92,6 +94,7 @@ class _CorsesScreenState extends State<CorsesScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TabBar(
+                isScrollable: true,
                 tabs: [
                   Tab(text: 'Purchased'),
                   Tab(text: 'Organization'),
@@ -104,7 +107,9 @@ class _CorsesScreenState extends State<CorsesScreen> {
                     // InstructorsTab(),
                     // OrganizationsTab(),
                     _buildContent('assets/images/intro2.jpg', 'No Courses!',
-                        'Start learning now by enrolling on courses.')
+                        'Start learning now by enrolling on courses.'),
+                    _buildContent('assets/images/intro1.jpg', 'No Courses!',
+                        'You have no course of any organization.')
                     // ConsultantsTab(),
                   ],
                 ),

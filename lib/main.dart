@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:poly_language/menubar/drawer_screen.dart';
+import 'package:poly_language/screens/splash_screen.dart';
 import 'package:poly_language/screens/swipe_screen.dart';
 import 'package:poly_language/signin/signin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,7 +12,8 @@ Future<void> main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool isFirstTime = prefs.getBool('first_time') ?? true;
 
-  runApp(MyApp(isFirstTime: isFirstTime));
+  runApp(MyApp(isFirstTime: isFirstTime),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: isFirstTime ? IntroScreen() : CombinedScreen(),
+      home: AnimatedSplashScreen(isFirstTime: isFirstTime),
     );
   }
 }

@@ -37,7 +37,8 @@ class CoursesDrawerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: primaryColor, // Set primary color as blue
+        // primaryColor: primaryColor, // Set primary color as blue
+        primaryColor: primaryColor,
         scaffoldBackgroundColor: Colors.white, // Set scaffold background color as grey
         inputDecorationTheme: InputDecorationTheme(
           fillColor: Colors.white, // Set text field background color as white
@@ -47,6 +48,7 @@ class CoursesDrawerScreen extends StatelessWidget {
         length: 2, // Define the number of tabs
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: primaryColor,
             title: Text('Courses'),
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
@@ -55,6 +57,7 @@ class CoursesDrawerScreen extends StatelessWidget {
               },
             ),
             bottom: TabBar( // Add TabBar to the appBar
+              isScrollable: true,
               tabs: [
                 Tab(text: 'Purchased'),
               Tab(text: 'Organization'),
@@ -64,8 +67,10 @@ class CoursesDrawerScreen extends StatelessWidget {
           body: TabBarView( // Add TabBarView to switch between tabs
             children: [
               // Define content for Tab 1
-              _buildContent('assets/images/intro2.jpg', 'No Courses!',
-                  'Start learning now by enrolling on courses.')
+              _buildContent('assets/images/intro3.jpg', 'No Courses!',
+                  'Start learning now by enrolling on courses.'),
+              _buildContent('assets/images/intro4.jpg', 'No Courses!',
+                  'You have no course of any organization.')
             ],
           ),
         ),

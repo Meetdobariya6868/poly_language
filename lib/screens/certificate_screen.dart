@@ -47,6 +47,7 @@ class CertificateScreen extends StatelessWidget {
         length: 2, // Define the number of tabs
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: primaryColor,
             title: Text('Certificates'),
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
@@ -55,6 +56,7 @@ class CertificateScreen extends StatelessWidget {
               },
             ),
             bottom: TabBar( // Add TabBar to the appBar
+              isScrollable: true,
               tabs: [
                 Tab(text: 'Quiz Certs.'),
                 Tab(text: 'Completion Certs.'),
@@ -64,7 +66,9 @@ class CertificateScreen extends StatelessWidget {
           body: TabBarView( // Add TabBarView to switch between tabs
             children: [
               // Define content for Tab 1
-              _buildContent('assets/images/intro2.jpg', 'No Certificates!',
+              _buildContent('assets/images/intro.jpg', 'No Certificates!',
+                  'You have no certificate yet.'),
+              _buildContent('assets/images/intro3.jpg', 'No Certificates!',
                   'You have no certificate yet.')
             ],
           ),

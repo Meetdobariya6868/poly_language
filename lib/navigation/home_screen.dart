@@ -27,151 +27,165 @@ class _HomeScreenState extends State<HomeScreen> {
             isDrawerOpen ? BorderRadius.circular(40) : BorderRadius.circular(0),
       ),
       child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 40,
-            ),
-            Container(
-              // margin: EdgeInsets.symmetric(horizontal: 10),
-              color: primaryColor,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  isDrawerOpen
-                      ? GestureDetector(
-                          child: Icon(Icons.arrow_back_ios),
-                          onTap: () {
-                            setState(() {
-                              xOffset = 0;
-                              yOffset = 0;
-                              isDrawerOpen = false;
-                            });
-                          },
-                        )
-                      : GestureDetector(
-                          child: Icon(Icons.menu),
-                          onTap: () {
-                            setState(() {
-                              xOffset = 290;
-                              yOffset = 80;
-                              isDrawerOpen = true;
-                            });
-                          },
-                        ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'John Doe',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Text(
-                        "Let's start learning!",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 10),
-                        child: Icon(Icons.shopping_cart, color: Colors.black),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(right: 10),
-                        child: Icon(Icons.notifications, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SafeArea(
+            child: Column(
+              children: <Widget>[
+                // SizedBox(
+                //   height: 40,
+                // ),
                 Container(
+                  // margin: EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
                     color: primaryColor,
                   ),
 
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      hintText: 'What are you going to find?',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide.none,
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  child: Text(
-                    'Featured Courses',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: List.generate(
-                      2,
-                      (index) => CourseCard(),
-                    ),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      isDrawerOpen
+                          ? GestureDetector(
+                              child: Icon(Icons.arrow_back_ios,color: Colors.white,size: 30,),
+                              onTap: () {
+                                setState(() {
+                                  xOffset = 0;
+                                  yOffset = 0;
+                                  isDrawerOpen = false;
+                                });
+                              },
+                            )
+                          : GestureDetector(
+                              child: Icon(Icons.menu,color: Colors.white,size: 25),
+                              onTap: () {
+                                setState(() {
+                                  xOffset = 290;
+                                  yOffset = 80;
+                                  isDrawerOpen = true;
+                                });
+                              },
+                            ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'John Doe',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                          Text(
+                            "Let's start learning!",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            child: Icon(Icons.shopping_cart, color: Colors.white),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: 10),
+                            child: Icon(Icons.notifications, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Newest Courses',
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.vertical(
+                          bottom: Radius.circular(20),
+                        ),
+                        color: primaryColor,
+                      ),
+
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.search),
+                          hintText: 'What are you going to find?',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide.none,
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      child: Text(
+                        'Featured Courses',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 10),
-                      NewestCoursesList(), // Display the list of newest courses
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  child: ExpansionTile(
-                    title: Text(
-                      'Newest Bundles',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(
+                          2,
+                          (index) => CourseCard(),
+                        ),
                       ),
                     ),
-                    children: [
-                      SizedBox(height: 10),
-                      NewestBundlesList(),
-                    ],
-                  ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Newest Courses',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          NewestCoursesList(), // Display the list of newest courses
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      child: ExpansionTile(
+                        title: Text(
+                          'Newest Bundles',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        children: [
+                          SizedBox(height: 10),
+                          NewestBundlesList(),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );

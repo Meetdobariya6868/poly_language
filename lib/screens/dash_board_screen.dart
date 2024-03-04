@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:poly_language/screens/constant.dart';
 
 class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard'),
+        iconTheme: IconThemeData(
+          color: Colors.white, // Change the color of the leading icon to white
+        ),
+        backgroundColor: primaryColor,
+        title: Text('Dashboard',style: TextStyle(
+          color: Colors.white,
+        ),),
       ),
       body: DashboardBody(),
     );
@@ -56,7 +63,7 @@ class DashboardBody extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.blue,
+                      color: primaryColor,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -84,7 +91,7 @@ class DashboardBody extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.blue,
+                      color: primaryColor,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -139,7 +146,7 @@ class DashboardBody extends StatelessWidget {
                       FlSpot(11, 9),
                     ],
                     isCurved: true,
-                    colors: [Colors.blue],
+                    colors: [primaryColor],
                     barWidth: 2,
                     isStrokeCapRound: true,
                     belowBarData: BarAreaData(show: false),

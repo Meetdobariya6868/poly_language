@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:poly_language/screens/constant.dart';
 
 import '../screens/blog_detail_screen.dart';
 
@@ -19,61 +20,59 @@ class _BlogScreenState extends State<BlogScreen> {
     return AnimatedContainer(
       transform: Matrix4.translationValues(xOffset, yOffset, 0)
         ..scale(isDrawerOpen ? 0.85 : 1.00)
-        ..rotateZ(isDrawerOpen ? -0.2 : 0),
+        ..rotateZ(isDrawerOpen ? -50 : 0),
       duration: Duration(milliseconds: 200),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius:
         isDrawerOpen ? BorderRadius.circular(40) : BorderRadius.circular(0),
       ),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(height: 40),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  isDrawerOpen
-                      ? GestureDetector(
-                    child: Icon(Icons.arrow_back_ios),
-                    onTap: () {
-                      setState(() {
-                        xOffset = 0;
-                        yOffset = 0;
-                        isDrawerOpen = false;
-                      });
-                    },
-                  )
-                      : GestureDetector(
-                    child: Icon(Icons.menu),
-                    onTap: () {
-                      setState(() {
-                        xOffset = 230;
-                        yOffset = 150;
-                        isDrawerOpen = true;
-                      });
-                    },
-                  ),
-                  Text(
-                    'Blog',
-                    style: TextStyle(fontSize: 20, color: Colors.black87),
-                  ),
-                  Container(),
-                ],
+      child: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: primaryColor,
+            elevation: 0,
+            centerTitle: true,
+            title: Text(
+              'Blog',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+                decoration: TextDecoration.none,
               ),
             ),
-            // SizedBox(height: 20),
-            ListView.builder(
+            leading: isDrawerOpen
+                ? GestureDetector(
+              child: Icon(Icons.arrow_back_ios,color: Colors.white,size: 30),
+              onTap: () {
+                setState(() {
+                  xOffset = 0;
+                  yOffset = 0;
+                  isDrawerOpen = false;
+                });
+              },
+            )
+                : GestureDetector(
+              child: Icon(Icons.menu,color: Colors.white,size: 25),
+              onTap: () {
+                setState(() {
+                  xOffset = 290;
+                  yOffset = 80;
+                  isDrawerOpen = true;
+                });
+              },
+            ),
+          ),
+          body: SingleChildScrollView(
+            child: ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemCount: 3, // Adjust as per the number of blogs
               itemBuilder: (context, index) {
                 return BlogCard(
                   image: 'assets/images/blog${index + 1}.jpg',
-                  companyLogo: 'assets/images/company_logo_${index + 1}.jpg',
+                  companyLogo: 'assets/images/intro${index + 1}.jpg',
                   companyName: 'Company $index',
                   title: 'Blog Title $index',
                   subtitle: 'This is a subtitle for blog $index. It can be a bit longer to test the layout.',
@@ -82,7 +81,7 @@ class _BlogScreenState extends State<BlogScreen> {
                 );
               },
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -127,7 +126,7 @@ class BlogCard extends StatelessWidget {
                     companyLogo: companyLogo,
                     description: subtitle,
                     date: date,
-                    companyLogoUrl: 'aseets/images/intro1.jpg',
+                    // companyLogoUrl: 'aseets/images/intro1.jpg',
                     category: '',
                     // Add any other necessary data
                   ),

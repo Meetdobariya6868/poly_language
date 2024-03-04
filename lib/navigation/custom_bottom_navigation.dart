@@ -54,7 +54,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                                 : Icons.camera,
                             color: index == selectedIndex
                                 ? Colors.blue
-                                : Colors.grey,
+                                : Colors.white,
                           ),
                           SizedBox(height: 2),
                           Text(
@@ -66,11 +66,11 @@ class CustomBottomNavigationBar extends StatelessWidget {
                                 ? 'Home'
                                 : index == 3
                                 ? 'Blog'
-                                : 'My Camera',
+                                : 'My Coourses',
                             style: TextStyle(
                               color: index == selectedIndex
                                   ? Colors.blue
-                                  : Colors.grey,
+                                  : Colors.white,
                             ),
                           ),
                         ],

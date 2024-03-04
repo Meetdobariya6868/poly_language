@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poly_language/screens/constant.dart';
 
 import 'home_screen.dart';
 
@@ -29,19 +30,20 @@ class _ProvidersScreenState extends State<ProvidersScreen> {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.transparent,
+            backgroundColor: primaryColor,
+            centerTitle: true,
             elevation: 0,
             title: Text(
               'Providers',
               style: TextStyle(
                 fontSize: 20,
-                color: Colors.black87,
+                color: Colors.white,
                 decoration: TextDecoration.none,
               ),
             ),
             leading: isDrawerOpen
                 ? GestureDetector(
-              child: Icon(Icons.arrow_back_ios),
+              child: Icon(Icons.arrow_back_ios,color: Colors.white,size: 30),
               onTap: () {
                 setState(() {
                   xOffset = 0;
@@ -51,7 +53,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> {
               },
             )
                 : GestureDetector(
-              child: Icon(Icons.menu),
+              child: Icon(Icons.menu,color: Colors.white,size: 25),
               onTap: () {
                 setState(() {
                   xOffset = 290;
@@ -81,6 +83,7 @@ class _ProvidersScreenState extends State<ProvidersScreen> {
                 ),
               ),
               TabBar(
+                isScrollable: true,
                 tabs: [
                   Tab(text: 'Instructors'),
                   Tab(text: 'Organizations'),
@@ -108,51 +111,54 @@ class _ProvidersScreenState extends State<ProvidersScreen> {
 class InstructorsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 200,
-        mainAxisSpacing: 20,
-        crossAxisSpacing: 20,
-        childAspectRatio: 1,
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200,
+          mainAxisSpacing: 20,
+          crossAxisSpacing: 20,
+          childAspectRatio: 1,
+        ),
+        itemCount: 10, // Assuming you have 10 instructors
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundImage: AssetImage('assets/images/profile.jpg'), // You can replace this with actual image
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Username',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'Role',
+                  style: TextStyle(fontSize: 14, color: Colors.grey),
+                ),
+                SizedBox(height: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.star, color: Colors.amber,size: 15),
+                    Icon(Icons.star, color: Colors.amber,size: 15),
+                    Icon(Icons.star, color: Colors.amber,size: 15),
+                    Icon(Icons.star, color: Colors.amber,size: 15),
+                    Icon(Icons.star_half, color: Colors.amber,size: 15),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
       ),
-      itemCount: 10, // Assuming you have 10 instructors
-      itemBuilder: (BuildContext context, int index) {
-        return Container(
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 30,
-                backgroundImage: AssetImage('assets/images/profile.jpg'), // You can replace this with actual image
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Username',
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'Role',
-                style: TextStyle(fontSize: 14, color: Colors.grey),
-              ),
-              SizedBox(height: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.star, color: Colors.amber,size: 15),
-                  Icon(Icons.star, color: Colors.amber,size: 15),
-                  Icon(Icons.star, color: Colors.amber,size: 15),
-                  Icon(Icons.star, color: Colors.amber,size: 15),
-                  Icon(Icons.star_half, color: Colors.amber,size: 15),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }
@@ -161,51 +167,54 @@ class OrganizationsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 200,
-        mainAxisSpacing: 20,
-        crossAxisSpacing: 20,
-        childAspectRatio: 1,
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200,
+          mainAxisSpacing: 20,
+          crossAxisSpacing: 20,
+          childAspectRatio: 1,
+        ),
+        itemCount: 10, // Assuming you have 10 instructors
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundImage: AssetImage('assets/images/profile.jpg'), // You can replace this with actual image
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Username',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'Role',
+                  style: TextStyle(fontSize: 14, color: Colors.grey),
+                ),
+                SizedBox(height: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.star, color: Colors.amber,size: 15),
+                    Icon(Icons.star, color: Colors.amber,size: 15),
+                    Icon(Icons.star, color: Colors.amber,size: 15),
+                    Icon(Icons.star, color: Colors.amber,size: 15),
+                    Icon(Icons.star_half, color: Colors.amber,size: 15),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
       ),
-      itemCount: 10, // Assuming you have 10 instructors
-      itemBuilder: (BuildContext context, int index) {
-        return Container(
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 30,
-                backgroundImage: AssetImage('assets/images/profile.jpg'), // You can replace this with actual image
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Username',
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'Role',
-                style: TextStyle(fontSize: 14, color: Colors.grey),
-              ),
-              SizedBox(height: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.star, color: Colors.amber,size: 15),
-                  Icon(Icons.star, color: Colors.amber,size: 15),
-                  Icon(Icons.star, color: Colors.amber,size: 15),
-                  Icon(Icons.star, color: Colors.amber,size: 15),
-                  Icon(Icons.star_half, color: Colors.amber,size: 15),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }
@@ -214,51 +223,54 @@ class ConsultantsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 200,
-        mainAxisSpacing: 20,
-        crossAxisSpacing: 20,
-        childAspectRatio: 1,
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200,
+          mainAxisSpacing: 20,
+          crossAxisSpacing: 20,
+          childAspectRatio: 1,
+        ),
+        itemCount: 10, // Assuming you have 10 instructors
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundImage: AssetImage('assets/images/profile.jpg'), // You can replace this with actual image
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Username',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'Role',
+                  style: TextStyle(fontSize: 14, color: Colors.grey),
+                ),
+                SizedBox(height: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.star, color: Colors.amber,size: 15),
+                    Icon(Icons.star, color: Colors.amber,size: 15),
+                    Icon(Icons.star, color: Colors.amber,size: 15),
+                    Icon(Icons.star, color: Colors.amber,size: 15),
+                    Icon(Icons.star_half, color: Colors.amber,size: 15),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
       ),
-      itemCount: 10, // Assuming you have 10 instructors
-      itemBuilder: (BuildContext context, int index) {
-        return Container(
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 30,
-                backgroundImage: AssetImage('assets/images/profile.jpg'), // You can replace this with actual image
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Username',
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'Role',
-                style: TextStyle(fontSize: 14, color: Colors.grey),
-              ),
-              SizedBox(height: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.star, color: Colors.amber,size: 15),
-                  Icon(Icons.star, color: Colors.amber,size: 15),
-                  Icon(Icons.star, color: Colors.amber,size: 15),
-                  Icon(Icons.star, color: Colors.amber,size: 15),
-                  Icon(Icons.star_half, color: Colors.amber,size: 15),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }

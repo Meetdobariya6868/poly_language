@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class BlogDetailScreen extends StatelessWidget {
   final String title;
   final String date;
-  final String companyLogoUrl;
+  final String companyLogo;
   final String companyName;
   final String category;
   final String description;
@@ -12,11 +12,11 @@ class BlogDetailScreen extends StatelessWidget {
   const BlogDetailScreen({
     required this.title,
     required this.date,
-    required this.companyLogoUrl,
+    required this.companyLogo,
     required this.companyName,
     required this.category,
     required this.description,
-    required String companyLogo,
+    // required String companyLogo,
     required this.image,
   });
 
@@ -63,7 +63,7 @@ class BlogDetailScreen extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 20,
-                        backgroundImage: NetworkImage(companyLogoUrl),
+                        backgroundImage: AssetImage(companyLogo),
                       ),
                       SizedBox(width: 10),
                       Column(

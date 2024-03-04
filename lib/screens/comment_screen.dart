@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poly_language/screens/constant.dart';
 
 // void main() {
 //   runApp(MyApp());
@@ -19,8 +20,12 @@ class CommentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Comments'),
+        iconTheme: IconThemeData(
+          color: Colors.white, // Change the color of the leading icon to white
+        ),
+        title: Text('Comments',style: TextStyle(color: Colors.white),),
         centerTitle: true,
+        backgroundColor: primaryColor,
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -30,13 +35,13 @@ class CommentScreen extends StatelessWidget {
             CommentItem(
               username: 'User 1',
               comment: 'This is an amazing comment!',
-              profileImageUrl: 'assets/images/user1.jpg',
+              profileImageUrl: 'assets/images/ielts1.jpg',
             ),
             SizedBox(height: 20),
             CommentItem(
               username: 'User 2',
               comment: 'Great job!',
-              profileImageUrl: 'assets/images/user2.jpg',
+              profileImageUrl: 'assets/images/ielts2.jpg',
             ),
             // Add more CommentItem widgets for additional comments
           ],

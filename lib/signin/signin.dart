@@ -9,6 +9,9 @@ import '../menubar/drawer_screen.dart';
 class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
@@ -33,7 +36,7 @@ class SignInScreen extends StatelessWidget {
                 SizedBox(height: screenHeight * 0.15), // Adjusted using MediaQuery// Email TextField
                 CustomTextField(
                   prefixIcon: Icons.mail,
-                  hintText: 'Email',
+                  hintText: 'Email', controller: emailController,
                 ),
                 SizedBox(height: 20.0),
 
@@ -41,6 +44,7 @@ class SignInScreen extends StatelessWidget {
                 CustomTextField(
                   prefixIcon: Icons.lock,
                   hintText: 'Password',
+                  controller: passwordController,
                   obscureText: true,
                 ),
                 SizedBox(height: screenHeight * 0.15), // Adjusted using MediaQuery// Email TextField
@@ -49,9 +53,9 @@ class SignInScreen extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Add your login logic here
-                      String email = "123";
-                      String password = "123";
+                      // Get the input from text fields
+                      String email = emailController.text;
+                      String password = passwordController.text;
 
                       // Check if email and password match
                       if (email == "123" && password == "123") {
@@ -106,18 +110,21 @@ class CustomTextField extends StatelessWidget {
   final IconData prefixIcon;
   final String hintText;
   final bool obscureText;
+  final TextEditingController controller; // Add controller property
 
   const CustomTextField({
     Key? key,
     required this.prefixIcon,
     required this.hintText,
     this.obscureText = false,
+    required this.controller, // Accept controller in the constructor
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       obscureText: obscureText,
+      controller: controller, // Bind controller to TextField
       decoration: InputDecoration(
         prefixIcon: Icon(prefixIcon, color: Colors.grey),
         hintText: hintText,

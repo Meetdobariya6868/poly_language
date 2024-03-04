@@ -47,6 +47,7 @@ class MettingScreen extends StatelessWidget {
         length: 1, // Define the number of tabs
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: primaryColor,
             title: Text('Mettings'),
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
@@ -55,6 +56,7 @@ class MettingScreen extends StatelessWidget {
               },
             ),
             bottom: TabBar( // Add TabBar to the appBar
+              isScrollable: true,
               tabs: [
                 Tab(text: 'Reserved'),
                 // Tab(text: 'Organization'),

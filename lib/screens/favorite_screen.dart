@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poly_language/screens/constant.dart';
 
 // void main() {
 //   runApp(MyApp());
@@ -19,8 +20,13 @@ class FavoriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorites'),
+        iconTheme: IconThemeData(
+          color: Colors.white, // Change the color of the leading icon to white
+        ),
+        backgroundColor: primaryColor,
         centerTitle: true,
+        elevation: 0,
+        title: Text('Favorites',style: TextStyle(color: Colors.white),),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
